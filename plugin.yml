@@ -1,0 +1,9 @@
+name: CzerCaixas
+version: 1.0
+author: CzerGamesBR_
+main: me.czergames.caixas.Main
+
+commands:
+  caixasadmin:
+  
+  givecaixas:
