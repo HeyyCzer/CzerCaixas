@@ -4,6 +4,4 @@ author: CzerGamesBR_
 main: me.czergames.caixas.Main
 
 commands:
-  caixasadmin:
-  
-  givecaixas:
+  caixas:

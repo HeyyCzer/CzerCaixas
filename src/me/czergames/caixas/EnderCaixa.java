@@ -56,7 +56,7 @@ public class EnderCaixa {
         as.setMarker(false);
         as.setGravity(false);
         as.setCanPickupItems(false);
-        as.setCustomName("§aAbrindo...");
+        as.setCustomName("Â§aAbrindo...");
         as.setCustomNameVisible(false);
         ItemStack head = new ItemStack(Material.CHEST);
         as.setHelmet(head);
@@ -92,7 +92,7 @@ public class EnderCaixa {
                     as.setCustomNameVisible(true);
                 } else if (i == 100) {
                     Location asloc = as.getEyeLocation();
-                    as.setCustomName("§aVocê ganhou: §fTESTE1");
+                    as.setCustomName("Â§aVocÃª ganhou: Â§fTESTE1");
                     for (Entity entity : Bukkit.getWorld("mundotestes").getEntities()) {
                         if (entity instanceof Player) {
                             Player p = (Player) entity;

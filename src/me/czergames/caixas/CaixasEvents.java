@@ -47,10 +47,10 @@ public class CaixasEvents implements Listener {
 
     @EventHandler
     public void aoClicarNaCaixa(PlayerInteractEvent e) {
-        Player p = e.getPlayer();
+        final Player p = e.getPlayer();
         Block b = e.getClickedBlock();
         if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            for (EnderCaixa ec : Main.CACHE_CAIXAS) {
+            for (final EnderCaixa ec : Main.CACHE_CAIXAS) {
                 if (ec.getLoc().equals(b.getLocation())) {
                     if (ec.getUser() != null) {
                         p.sendMessage("§cJá há alguem abrindo uma caixa no momento. Tente novamente mais tarde.");

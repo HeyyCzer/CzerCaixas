@@ -16,11 +16,11 @@ public class SetCaixa implements CommandExecutor {
         }
         Player p = (Player) sender;
         if(!p.hasPermission("cz.admin")){
-            p.sendMessage("§cVocê precisa do grupo §c[Admin] §cou superior para executar este comando.");
+            p.sendMessage("Â§cVocÃª precisa do grupo Â§c[Admin] Â§cou superior para executar este comando.");
             return true;
         }
         if(args.length == 0) {
-            p.sendMessage("§cUse: /caixa <give/remove/setloc/set> [player] [quantidade].");
+            p.sendMessage("Â§cUse: /caixas <give/remove/setloc/set> [player] [quantidade].");
             return true;
         }
         if(args.length == 1){
