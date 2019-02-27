@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="CzerCaixas:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/CzerCaixas_jar</output-path>
+    <root id="archive" name="CzerCaixas.jar">
+      <element id="module-output" name="CzerCaixas" />
+    </root>
+  </artifact>
+</component>
