@@ -47,10 +47,10 @@ public class CaixasEvents implements Listener {
 
     @EventHandler
     public void aoClicarNaCaixa(PlayerInteractEvent e) {
-        final Player p = e.getPlayer();
+        Player p = e.getPlayer();
         Block b = e.getClickedBlock();
         if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            for (final EnderCaixa ec : Main.CACHE_CAIXAS) {
+            for (EnderCaixa ec : Main.CACHE_CAIXAS) {
                 if (ec.getLoc().equals(b.getLocation())) {
                     e.setCancelled(true);
                     if (ec.getUser() != null) {
@@ -66,10 +66,7 @@ public class CaixasEvents implements Listener {
                             ec.setUser(null);
                         }
                     }, 20 * 20);
-
-                    return;
                 }
-                return;
             }
         }
     }

@@ -32,15 +32,15 @@ public class SetCaixa implements CommandExecutor {
                 b.setType(ec.getType());
                 float rotation = p.getLocation().getYaw();
                 if (0 <= rotation && rotation < 67.5) {
-                    b.setData((byte)1);
-                } else if (67.5 <= rotation && rotation < 157.5) {
-                    b.setData((byte)5);
-                }  else if (157.5 <= rotation && rotation < 247.5) {
                     b.setData((byte)3);
+                } else if (67.5 <= rotation && rotation < 157.5) {
+                    b.setData((byte)0);
+                }  else if (157.5 <= rotation && rotation < 247.5) {
+                    b.setData((byte)2);
                 } else if (247.5 <= rotation && rotation < 337.5) {
-                    b.setData((byte)4);
-                }  else if (337.5 <= rotation && rotation < 360.0) {
                     b.setData((byte)1);
+                }  else if (337.5 <= rotation && rotation < 360.0) {
+                    b.setData((byte)3);
                 }
                 return true;
             }
