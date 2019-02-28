@@ -21,13 +21,13 @@ public class SetCaixa implements CommandExecutor {
             return true;
         }
         if(args.length == 0) {
-            p.sendMessage("§cUse: /caixas <give/remove/setloc/set> [player] [quantidade].");
+            p.sendMessage("§cUse: /caixas <give/remove/setloc/set> [player/ID] [quantidade].");
             return true;
         }
-        if(args.length == 1){
+        if(args.length == 2){
             if(args[0].equalsIgnoreCase("setloc")){
-                EnderCaixa ec = new EnderCaixa(p.getLocation(), Material.ENDER_CHEST, null);
-                Main.CACHE_CAIXAS.add(ec);
+                EnderCaixa ec = new EnderCaixa(p.getLocation(), Material.ENDER_CHEST, Integer.valueOf(args[1]));
+                Main.CACHE_CAIXAS.put(ec.getId(), ec);
                 Block b = Bukkit.getWorld(p.getLocation().getWorld().getName()).getBlockAt(p.getLocation());
                 b.setType(ec.getType());
                 float rotation = p.getLocation().getYaw();

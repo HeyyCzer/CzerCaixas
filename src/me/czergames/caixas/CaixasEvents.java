@@ -50,22 +50,18 @@ public class CaixasEvents implements Listener {
         Player p = e.getPlayer();
         Block b = e.getClickedBlock();
         if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            for (EnderCaixa ec : Main.CACHE_CAIXAS) {
-                if (ec.getLoc().equals(b.getLocation())) {
-                    e.setCancelled(true);
-                    if (ec.getUser() != null) {
-                        p.sendMessage("§cJá há alguem abrindo uma caixa no momento. Tente novamente mais tarde.");
-                        return;
-                    }
-                    ec.setUser(p.getName());
-                    openInventory(p);
-                    Bukkit.getServer().getScheduler().runTaskLater(Main.getInstance(), new Runnable() {
-                        @Override
-                        public void run() {
-                            p.closeInventory();
-                            ec.setUser(null);
+            for(EnderCaixa ec : Main.CACHE_CAIXAS.values()){
+                if(b.getLocation().getBlockX() == ec.getLoc().getBlockX()){
+                    if(b.getLocation().getBlockY() == ec.getLoc().getBlockY()){
+                        if(b.getLocation().getBlockZ() == ec.getLoc().getBlockZ()){
+                            e.setCancelled(true);
+                            if(Main.CACHE_LOCS.containsKey(p.getName())){
+                                Main.CACHE_LOCS.remove(p.getName());
+                            }
+                            Main.CACHE_LOCS.put(p.getName(), ec.getId());
+                            openInventory(p);
                         }
-                    }, 20 * 20);
+                    }
                 }
             }
         }
@@ -81,3 +77,22 @@ public class CaixasEvents implements Listener {
         }
     }
 }
+/*
+for (EnderCaixa ec : Main.CACHE_CAIXAS) {
+        if (ec.getLoc().equals(b.getLocation())) {
+        e.setCancelled(true);
+        if (ec.getUser() != null) {
+        p.sendMessage("§cJá há alguem abrindo uma caixa no momento. Tente novamente mais tarde.");
+        return;
+        }
+        ec.setUser(p.getName());
+        openInventory(p);
+        Bukkit.getServer().getScheduler().runTaskLater(Main.getInstance(), new Runnable() {
+@Override
+public void run() {
+        p.closeInventory();
+        ec.setUser(null);
+        }
+        }, 20 * 20);
+        }
+        }*/

@@ -2,6 +2,7 @@ package me.czergames.caixas;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
@@ -9,7 +10,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
 
-	public static ArrayList<EnderCaixa> CACHE_CAIXAS = new ArrayList<>();
+	public static HashMap<Integer, EnderCaixa> CACHE_CAIXAS = new HashMap<>();
+	public static HashMap<String, Integer> CACHE_LOCS = new HashMap<>();
+	public static HashMap<String, Integer> CACHE_USER = new HashMap<>();
 
 	public void onEnable() {
 		ConsoleCommandSender csl = Bukkit.getConsoleSender();

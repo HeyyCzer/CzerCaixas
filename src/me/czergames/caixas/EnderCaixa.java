@@ -17,12 +17,20 @@ import org.bukkit.util.EulerAngle;
 public class EnderCaixa {
     private Location loc;
     private Material type;
-    private String user;
+    private int id;
 
-    public EnderCaixa(Location loc, Material type, String user) {
+    public EnderCaixa(Location loc, Material type, int id) {
+        this.id = id;
         this.loc = loc;
         this.type = type;
-        this.user = user;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Location getLoc() {
@@ -41,15 +49,7 @@ public class EnderCaixa {
         this.type = type;
     }
 
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public void animate() {
+    public void animate(Player p) {
         Location loc2 = this.loc.clone().add(0, -1.10, 0);
         final ArmorStand as = (ArmorStand) loc.getWorld().spawnEntity(loc2, EntityType.ARMOR_STAND);
         as.setVisible(false);
@@ -114,8 +114,9 @@ public class EnderCaixa {
 
             }
         }, 10, 1);
-
-
+        Main.CACHE_USER.remove(p.getName());
+        Main.CACHE_USER.remove(p.getName());
+        Main.CACHE_USER.remove(p.getName());
     }
 
 }

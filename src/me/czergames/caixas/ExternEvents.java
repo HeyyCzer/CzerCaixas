@@ -14,14 +14,26 @@ public class ExternEvents implements Listener {
 
     @EventHandler
     public void invClick(InventoryClickEvent e) {
-        if (e.getInventory().getTitle().equals("§cCaixas")) {
+        if (e.getInventory().getTitle().equalsIgnoreCase("§cCaixas")) {
             e.setCancelled(true);
             Player p = (Player) e.getWhoClicked();
             if (e.getCurrentItem().getType() == Material.CHEST) {
                 if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§eCaixa básica")) {
                     if (caixas.getConfig().contains(p.getName())) {
                         if (caixas.getInt(p.getName()) > 0) {
-                            for (EnderCaixa ec : Main.CACHE_CAIXAS) {
+                            p.closeInventory();
+                            caixas.set(p.getName(), caixas.getInt(p.getName()) - 1);
+                            caixas.saveConfig();
+                            caixas.reloadConfig();
+                            Main.CACHE_USER.put(p.getName(), Main.CACHE_LOCS.get(p.getName()));
+                            Main.CACHE_CAIXAS.get(Main.CACHE_LOCS.get(p.getName())).animate(p);
+                            Main.CACHE_LOCS.remove(p.getName());
+                            Main.CACHE_LOCS.remove(p.getName());
+                            Main.CACHE_LOCS.remove(p.getName());
+
+
+
+                            /*                            for (EnderCaixa ec : Main.CACHE_CAIXAS) {
                                 if (ec.getUser() != null) {
                                     if (ec.getUser().equals(p.getName())) {
                                         p.closeInventory();
@@ -36,7 +48,7 @@ public class ExternEvents implements Listener {
                                     }
 
                                 }
-                            }
+                            }*/
                             p.sendMessage("§cJá há alguem abrindo uma caixa no momento. Tente novamente mais tarde.");
                         } else {
                             p.sendMessage("§cVocê não tem caixas básicas para abrir!");
