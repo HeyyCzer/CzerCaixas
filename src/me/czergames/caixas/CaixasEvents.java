@@ -52,19 +52,21 @@ public class CaixasEvents implements Listener {
         if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
             for (final EnderCaixa ec : Main.CACHE_CAIXAS) {
                 if (ec.getLoc().equals(b.getLocation())) {
+                    e.setCancelled(true);
                     if (ec.getUser() != null) {
                         p.sendMessage("§cJá há alguem abrindo uma caixa no momento. Tente novamente mais tarde.");
                         return;
                     }
                     ec.setUser(p.getName());
+                    openInventory(p);
                     Bukkit.getServer().getScheduler().runTaskLater(Main.getInstance(), new Runnable() {
                         @Override
                         public void run() {
                             p.closeInventory();
                             ec.setUser(null);
                         }
-                    }, 20 * 15);
-                    openInventory(p);
+                    }, 20 * 20);
+
                     return;
                 }
                 return;
